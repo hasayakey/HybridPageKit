@@ -93,6 +93,10 @@ IMP_HPKModelProtocol(@"")
         return;
     }
     
+    if (fabs(_defaultWebView.bounds.size.height - newSize.height) <= 1) {
+        return;
+    }
+    
     //文章长度小于一屏的，需要用js取高度，并且重新赋值
     if (newSize.height <= _defaultWebView.bounds.size.height) {
         NSString *jsString = [NSString stringWithFormat:@"document.documentElement.offsetHeight * %d / document.documentElement.clientWidth",(int)_defaultWebView.bounds.size.width];
